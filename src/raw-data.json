@@ -5,22 +5,18 @@
             "label": "TALENT PATH 1",
             "runes": [
                 {
-                    "id": "rune1",
                     "name": "chevrons",
                     "tier": 0
                 },
                 {
-                    "id": "rune2",
                     "name": "silverware",
                     "tier": 1
                 },
                 {
-                    "id": "rune3",
                     "name": "cake",
                     "tier": 2
                 },
                 {
-                    "id": "rune4",
                     "name": "crown",
                     "tier": 3
                 }
@@ -31,22 +27,18 @@
             "label": "TALENT PATH 2",
             "runes": [
                 {
-                    "id": "rune1",
                     "name": "ship",
                     "tier": 0
                 },
                 {
-                    "id": "rune2",
                     "name": "goggles",
                     "tier": 1
                 },
                 {
-                    "id": "rune3",
                     "name": "bolt",
                     "tier": 2
                 },
                 {
-                    "id": "rune4",
                     "name": "skull",
                     "tier": 3
                 }

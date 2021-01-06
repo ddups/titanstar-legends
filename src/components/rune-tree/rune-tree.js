@@ -29,8 +29,8 @@ const RuneTree = ({
      * @param {object} rune
      * @param {number} runeIndex 
      */
-    const renderRune = (treeId, { runeId, name, tier }, runeIndex) => {
-        const runeKey = `${treeId}_${runeId}`;
+    const renderRune = (treeId, { name, tier }, runeIndex) => {
+        const runeKey = `${treeId}_${name}`;
         return (
             <div key={runeKey} className="wrapper">
                 <Rune
