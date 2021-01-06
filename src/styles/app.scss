@@ -1,4 +1,3 @@
-// global variables
 $iconSize: 58px; // 50px for icon, 4px border
 $connectorSize: 16px;
 $lightBlue: #679acd;
@@ -8,6 +7,29 @@ $lightGray2: #333;
 $midGray1: #414243;
 $midGray2: #2c2b2c;
 $darkGray: #181819;
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin gradient-border($color1, $color2) {
+  border: 4px solid;
+  border-image: linear-gradient(to bottom, $color1 50%, $color2 51%, $color2 75%, $color1 100%) 1;
+}
+
+@mixin connector($bgColor, $borderColor) {
+  background: $bgColor;
+  border-bottom: 2px solid $borderColor;
+  border-top: 2px solid $borderColor;
+}
+
+@mixin counter-section($textColor) {
+  height: 50%;
+
+  color: $textColor;
+  font-size: 26px;
+}
 
 .main {
   align-content: center;
@@ -41,8 +63,7 @@ $darkGray: #181819;
 }
 
 .rune-trees {
-  display: flex;
-  flex-direction: column;
+  @include flex-column();
   justify-content: space-between;
 
   height: 160px;
@@ -80,19 +101,12 @@ $darkGray: #181819;
         width: 25%;
 
         > .rune {
+          @include gradient-border($lightGray1, $lightGray2);
+
           height: $iconSize;
           width: $iconSize;
 
           background: url(../assets/talent-icons-sprite.png);
-          border: 4px solid;
-          border-image: linear-gradient(
-              to bottom,
-              $lightGray1 50%,
-              $lightGray2 51%,
-              $lightGray2 75%,
-              $lightGray1 100%
-            )
-            1;
 
           cursor: pointer;
 
@@ -101,15 +115,9 @@ $darkGray: #181819;
           }
 
           &.selected {
+            @include gradient-border($lightBlue, $darkBlue);
+
             background-position-y: 0 !important;
-            border-image: linear-gradient(
-                to bottom,
-                $lightBlue 50%,
-                $darkBlue 51%,
-                $darkBlue 75%,
-                $lightBlue 100%
-              )
-              1;
             box-shadow: 0 0 3px 3px $lightGray2;
           }
 
@@ -147,19 +155,16 @@ $darkGray: #181819;
         }
 
         > .connector {
+          @include connector($darkGray, $midGray2);
+
           flex: 1;
 
           height: $connectorSize;
-          
-          background: $darkGray;
-          border-bottom: 2px solid $midGray2;
-          border-top: 2px solid $midGray2;
+
           opacity: 75%;
 
           &.active {
-            background: $lightGray2;
-            border-bottom: 2px solid $lightGray1;
-            border-top: 2px solid $lightGray1;
+            @include connector($lightGray2, $lightGray1);
           }
         }
       }
@@ -169,33 +174,25 @@ $darkGray: #181819;
 
 .point-counter {
   align-self: center;
-  justify-content: space-between;
 
   width: 25%;
 
   > .wrapper {
-    display: flex;
-    flex-direction: column;
-    
+    @include flex-column();
+
     padding: 5px 0;
     width: 80%;
-    
+
     background: rgba($color: #000000, $alpha: 0.5);
     border: 2px solid $darkGray;
     text-align: center;
-    
-    > .points {
-      height: 50%;
 
-      color: floralwhite;
-      font-size: 26px;
+    > .points {
+      @include counter-section(floralwhite);
     }
 
     > .label {
-      height: 50%;
-
-      color: #3a5a79;
-      font-size: 26px;
+      @include counter-section($darkBlue);
     }
   }
 }
